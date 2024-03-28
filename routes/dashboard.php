@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\ParametrosController;
 use App\Http\Controllers\Dashboard\UsuariosController;
 use App\Http\Controllers\Chat\ChatController;
 use App\Http\Controllers\FCM\FcmController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,6 @@ Route::middleware([
 
 Route::get('dashboard/perfil', [UsuariosController::class, 'perfil'])->middleware('auth')->name('usuarios.perfil');
 Route::get('chat-directo/{id?}', [ChatController::class, 'index'])->middleware(['user.android'])->name('chat.directo');
+
+Route::get('dashboard/prueba', [DashboardController::class, 'prueba'])->middleware('auth')->name('prueba.index');
 

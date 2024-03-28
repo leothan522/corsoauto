@@ -8,6 +8,10 @@
 
 @section('content')
     <p>Welcome to this beautiful admin panel.</p>
+
+    @foreach($estados as $valor)
+        {{ $valor['id'] }} - {{ $valor['nombre'] }}<br>
+    @endforeach
 @endsection
 
 @section('right-sidebar')
