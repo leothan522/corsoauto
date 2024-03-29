@@ -24,6 +24,11 @@
                     <i class="fas fa-bell"></i> Cloud Messaging (FCM)
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('prueba.index') }}" class="nav-link">
+                    <i class="fas fa-bell"></i> Pagina Pruebas
+                </a>
+            </li>
         @endif
         {{--@if(Auth::user()->role == 100)
             <li class="dropdown-divider"></li>

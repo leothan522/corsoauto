@@ -2889,7 +2889,7 @@ MDI0LTAzLTI4VDE3OjQxOjExKzAxOjAwSB9XsgAAAABJRU5ErkJggg==" />
 
             <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                 {{--Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})--}}
-                Sistema de Inventario (Demo)
+                Sistema de Inventario Bienes Nacionales (Demo)
             </div>
         </div>
     </div>

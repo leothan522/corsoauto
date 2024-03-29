@@ -3,19 +3,16 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Pagina Pruebas</h1>
 @endsection
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-
-    @foreach($estados as $valor)
-        {{ $valor['id'] }} - {{ $valor['nombre'] }}<br>
-    @endforeach
+    {{--<p>Welcome to this beautiful admin panel.</p>--}}
+    @include('dashboard._layout.content')
 @endsection
 
 @section('right-sidebar')
-    @include('dashboard.right-sidebar')
+    @include('dashboard._componentes.right-sidebar')
 @endsection
 
 @section('footer')
