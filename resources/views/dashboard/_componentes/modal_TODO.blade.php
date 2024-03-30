@@ -12,7 +12,7 @@
 
             <div class="card-body p-0">
 
-                <div class="table-responsive p-0" style="height: 40vh;">
+                <div class="table-responsive p-0" style="height: 60vh;">
 
                     <table class="table table-sm table-head-fixed table-hover text-nowrap">
                         <thead>
