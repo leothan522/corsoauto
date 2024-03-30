@@ -323,8 +323,8 @@ return [
                 [
                     'text' => 'Sedes',
                     'icon' => 'fas fa-fw fa-home',
-                    'route'  => 'usuarios.index',
-                    'can'  => 'bienes',
+                    'route'  => 'sedes.index',
+                    'can'  => 'sedes',
                 ],
             ],
         ],

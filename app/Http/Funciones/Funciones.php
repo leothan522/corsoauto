@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
-
 function hola(){
     return "Funciones Personalidas bien creada";
 }
@@ -228,10 +227,14 @@ function diaEspanol($fecha){
     return $dia;
 }
 
-function mesEspanol($numMes){
+function mesEspanol($numMes = null){
     $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-    $mes = $meses[$numMes - 1];
-    return $mes;
+    if (!is_null($numMes)){
+        $mes = $meses[$numMes - 1];
+        return $mes;
+    }else{
+        return $meses;
+    }
 }
 
 function numRowsPaginate(){
@@ -360,13 +363,67 @@ Comprobaremos si la segunda hora que le pasamos es inferior a la primera, con lo
 Y al final devolveremos true o false dependiendo si el valor introducido se encuentra entre lo que le hemos pasado.*/
 }
 
-function dataSelect2($rows)
+//Estado de Tienda Abierto o Cerrada
+function estatusTienda($id, $boton = false)
+{
+    //$estatus = true;
+    $estatus_tienda = Parametro::where('nombre', 'estatus_tienda')->where('tabla_id', $id)->first();
+    if ($estatus_tienda){
+
+        $estatus = $estatus_tienda->valor;
+
+        if (!$boton){
+            if ($estatus == 1){
+                $horario = Parametro::where('nombre', 'horario')->where('tabla_id', $id)->first();
+                if ($horario && $horario->valor == 1){
+
+                    $hoy = date('D');
+                    $dia = Parametro::where('nombre', "horario_$hoy")->where('tabla_id', $id)->first();
+                    $apertura = Parametro::where('nombre', 'horario_apertura')->where('tabla_id', $id)->first();
+                    $cierre = Parametro::where('nombre', 'horario_cierre')->where('tabla_id', $id)->first();
+
+                    if ($dia && $dia->valor == 1){
+
+                        if($apertura && $cierre){
+
+                            $estatus = hourIsBetween($apertura->valor, $cierre->valor, date('H:i'));
+
+                        }else{
+                            $estatus = true;
+                        }
+
+                    }else{
+                        $estatus = false;
+                    }
+
+                }
+            }
+
+        }
+
+
+    }else{
+        $estatus = false;
+    }
+
+    return $estatus;
+}
+
+function dataSelect2($rows, $text = null)
 {
     $data = array();
     foreach ($rows as $row){
+        switch ($text){
+            case 'nombre':
+                $text = $row->nombre;
+                break;
+            default:
+                $text = $row->codigo.'  '.$row->nombre;
+                break;
+        }
         $option = [
             'id' => $row->id,
-            'text' => $row->codigo.'  '.$row->nombre
+            'text' => $text
         ];
         array_push($data, $option);
     }
@@ -385,13 +442,28 @@ function array_sort_by($arrIni, $col, $order = SORT_ASC)
     return $arrIni;
 }
 
-function nextCodigo($next = 1, $parametros_nombre = null, $parametros_tabla_id = null, $formato = null){
-    $codigo = null;
+function nextCodigo($parametros_nombre = null, $parametros_tabla_id = null, $formato = null){
+    $next = 1;
 
     //buscamos algun formato para el codigo
-    $parametro = Parametro::where("nombre", $parametros_nombre)->where('tabla_id', $parametros_tabla_id)->first();
+    if (!is_null($parametros_tabla_id)){
+        $parametro = Parametro::where("nombre", $parametros_nombre)
+            ->where('tabla_id', $parametros_tabla_id)
+            ->first();
+    }else{
+        $parametro = Parametro::where("nombre", $parametros_nombre)
+            ->first();
+    }
+
     if ($parametro) {
-        $codigo = $parametro->valor;
+        if (is_null($parametros_tabla_id)){
+            $codigo = $parametro->valor;
+            $next = $parametro->tabla_id;
+        }else{
+            $explode = explode(',', $parametro->valor);
+            $codigo = $explode[0];
+            $next = $explode[1];
+        }
     }else{
         if (is_null($formato)){
             $codigo = "N".$parametros_tabla_id.'-';
@@ -400,7 +472,7 @@ function nextCodigo($next = 1, $parametros_nombre = null, $parametros_tabla_id =
         }
     }
 
-    if (!is_numeric($next)){ $next = 1; }
+    if (!is_numeric($next)) { $next = 1; }
 
     $size = cerosIzquierda($next, numSizeCodigo());
 
@@ -428,6 +500,8 @@ function telefonoSoporte()
     return $telefono;
 }
 
+//***********************************************************************************
+
 function cuantosDias($fecha_inicio, $fecha_final){
 
     if ($fecha_inicio == null){
@@ -451,14 +525,3 @@ function obtenerPorcentaje($cantidad, $total)
     }
     return 0;
 }
-
-//-------------------------------------------------------------------------------------
-
-/*function empresaDefault($default)
-{
-    if ($default){
-        return '<i class="fas fa-certificate text-muted text-xs"></i>';
-    }else{
-        return false;
-    }
-}*/

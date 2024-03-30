@@ -219,6 +219,18 @@
             $('#btn_header_oficios').click();
         }
 
+        function buscar(){
+            let input = $("#navbarSearch");
+            let keyword  = input.val();
+            if (keyword.length > 0){
+                input.blur();
+                //alert('Falta vincular con el componente Livewire');
+                verSpinnerOculto();
+                Livewire.dispatch('buscar', { keyword: keyword });
+            }
+            return false;
+        }
+
         console.log('Hi!');
     </script>
 @endsection

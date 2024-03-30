@@ -7,6 +7,7 @@ use App\Http\Controllers\Chat\ChatController;
 use App\Http\Controllers\FCM\FcmController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\BienesController;
+use App\Http\Controllers\Dashboard\SedesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::middleware([
 
     //Corsoauto
     Route::get('bienes', [BienesController::class, 'index'])->name('bienes.index');
+    Route::get('sedes', [SedesController::class, 'index'])->name('sedes.index');
 
 });
 

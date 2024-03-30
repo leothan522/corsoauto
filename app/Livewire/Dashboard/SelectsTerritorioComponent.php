@@ -14,14 +14,22 @@ class SelectsTerritorioComponent extends Component
 
     public $estados_id, $municipios_id, $ciudades_id, $parroquias_id;
 
-    public function mount()
-    {
-        $this->dispatch('selectEstados', data: $this->dataEstados());
-    }
-
     public function render()
     {
         return view('livewire.dashboard.selects-territorio-component');
+    }
+
+    #[On('initSelect')]
+    public function initSelect($estado = false)
+    {
+        $this->reset(['municipios_id', 'ciudades_id', 'parroquias_id']);
+        if (!$estado){
+            $this->reset(['estados_id']);
+            $this->dispatch('selectEstados', data: $this->dataEstados());
+        }
+        $this->dispatch('selectMunicipio', data: $this->dataMunicipio());
+        $this->dispatch('selectCiudad', data: $this->dataCiudad());
+        $this->dispatch('selectParroquia', data: $this->dataParroquia());
     }
 
     protected function dataEstados(): array
@@ -39,11 +47,9 @@ class SelectsTerritorioComponent extends Component
     #[On('getselectEstados')]
     public function getselectEstados($id)
     {
-        $this->reset(['municipios_id', 'ciudades_id', 'parroquias_id']);
         $this->estados_id = $id;
-        $this->dispatch('selectMunicipio', data: $this->dataMunicipio());
-        $this->dispatch('selectCiudad', data: $this->dataCiudad());
-        $this->dispatch('selectParroquia', data: $this->dataParroquia());
+        $this->initSelect(true);
+        $this->dispatch('getEstado', id: $this->estados_id)->to(SedesComponent::class);
     }
 
     #[On('setSelectEstados')]
@@ -69,6 +75,7 @@ class SelectsTerritorioComponent extends Component
     {
         $this->municipios_id = $id;
         $this->dispatch('selectParroquia', data: $this->dataParroquia());
+        $this->dispatch('getMunicipio', id: $this->municipios_id)->to(SedesComponent::class);
     }
 
     #[On('setSelectMunicipio')]
@@ -93,6 +100,7 @@ class SelectsTerritorioComponent extends Component
     public function getselectCiudad($id)
     {
         $this->ciudades_id = $id;
+        $this->dispatch('getCiudad', id: $this->ciudades_id)->to(SedesComponent::class);
     }
 
     #[On('setSelectCiudad')]
@@ -117,6 +125,7 @@ class SelectsTerritorioComponent extends Component
     public function getselectParroquia($id)
     {
         $this->parroquias_id = $id;
+        $this->dispatch('getParroquia', id: $this->parroquias_id)->to(SedesComponent::class);
     }
 
     #[On('setSelectParroquia')]

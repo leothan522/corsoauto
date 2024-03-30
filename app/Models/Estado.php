@@ -21,4 +21,10 @@ class Estado extends Model
     {
         return $this->hasMany(Ciudad::class, 'estados_id', 'id');
     }
+
+    public function sedes(): HasMany
+    {
+        return $this->hasMany(Sede::class, 'estados_id', 'id');
+    }
+
 }
