@@ -29,21 +29,21 @@
         @endif
         <li class="dropdown-divider"></li>
         <li class="nav-item mb-2">
-            <span class="text-small text-muted float-right">Reportes</span>
+            <span class="text-small text-muted float-right">Configuración</span>
         </li>
         <li class="nav-item">
             <button type="button" class="btn btn-primary btn-sm btn-block m-1"
                     data-toggle="modal" data-target="#modal-reportes-stock"
                 {{--@if(!comprobarPermisos('almacenes.index')) disabled @endif--}} >
-                Excel 1
+                Atributos
             </button>
         </li>
-        <li class="nav-item">
+        {{--<li class="nav-item">
             <button type="button" class="btn btn-primary btn-sm btn-block m-1"
                     data-toggle="modal" data-target="#modal-reportes-ajustes"
-                {{--@if(!comprobarPermisos('almacenes.index')) disabled @endif--}} >
+                --}}{{--@if(!comprobarPermisos('almacenes.index')) disabled @endif--}}{{-- >
                 Excel 2
             </button>
-        </li>
+        </li>--}}
     </ul>
 </div>

@@ -56,7 +56,11 @@
             @livewire('dashboard.imagenes-component')
         </div>--}}
 
-        <div class="row m-5 @if(/*!$view*/false) d-none @endif ">
+        <div @if(/*!$form*/false) class="d-none" @endif >
+            @include('dashboard._layout.form_territotio')
+        </div>
+
+        <div class="row m-5 @if(/*!$view*/true) d-none @endif ">
             <div class="col-12">
                 Debes seleccionar un Bien para empezar...
             </div>
@@ -64,7 +68,7 @@
 
     </div>
 
-    <div class="card-footer text-center @if(/*!$footer*/false) d-none @endif">
+    <div class="card-footer text-center @if(/*!$footer*/true) d-none @endif">
 
 
         <button type="button" class="btn btn-default btn-sm" {{--wire:click="btnUbicacion" onclick="verSpinnerOculto()"--}}

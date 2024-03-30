@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+@section('plugins.Select2', true)
+
 @section('title', 'Dashboard')
 
 @section('content_header')
@@ -25,6 +27,7 @@
 
 @section('js')
     <script src="{{ asset("js/app.js") }}"></script>
+    <script src="{{ asset("js/territorio.js") }}"></script>
     <script>
 
         function search(){
