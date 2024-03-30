@@ -309,7 +309,25 @@ return [
         ],
 
         // Sidebar items:
-
+        [
+            'text'      => 'Gestionar Bienes',
+            'icon'      => 'fas fa-fw fa-book',
+            'can'       => ['bienes'],
+            'submenu' => [
+                [
+                    'text' => 'Bienes',
+                    'icon' => 'fas fa-fw fa-boxes',
+                    'route'  => 'bienes.index',
+                    'can'  => 'bienes',
+                ],
+                [
+                    'text' => 'Sedes',
+                    'icon' => 'fas fa-fw fa-home',
+                    'route'  => 'usuarios.index',
+                    'can'  => 'bienes',
+                ],
+            ],
+        ],
         [
             'text'      => 'Configuración',
             'icon'      => 'fas fa-fw fa-cogs',

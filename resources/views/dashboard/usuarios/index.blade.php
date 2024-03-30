@@ -86,7 +86,7 @@
             $('#div_ver_spinner_usuarios').removeClass('d-none');
         });
 
-        function search(){
+        /*function search(){
             let input = $("#navbarSearch");
             let keyword  = input.val();
             if (keyword.length > 0){
@@ -95,7 +95,7 @@
                 Livewire.dispatch('buscar', { keyword:keyword });
             }
             return false;
-        }
+        }*/
 
         console.log('Hi!');
     </script>

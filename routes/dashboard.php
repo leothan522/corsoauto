@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\UsuariosController;
 use App\Http\Controllers\Chat\ChatController;
 use App\Http\Controllers\FCM\FcmController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\BienesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,9 @@ Route::middleware([
     Route::get('parametros', [ParametrosController::class, 'index'])->name('parametros.index');
     Route::get('usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
     Route::get('export/usuarios/{buscar?}', [UsuariosController::class, 'export'])->name('usuarios.excel');
+
+    //Corsoauto
+    Route::get('bienes', [BienesController::class, 'index'])->name('bienes.index');
 
 });
 
