@@ -66,14 +66,14 @@
 
     <div class="card-footer text-center @if(!$footer) d-none @endif">
 
-        <button type="button" class="btn btn-default btn-sm" wire:click="btnUbicacion" onclick="verSpinnerOculto()"
-                data-toggle="modal" data-target="#modal-sm-bien-ubicacion"
+        <button type="button" class="btn btn-default btn-sm"{{-- wire:click="btnUbicacion" onclick="verSpinnerOculto()"--}}
+                data-toggle="modal" data-target="#modal-sm-todo"
             {{--@if(!comprobarPermisos('bienes.edit')) disabled @endif--}}>
             <i class="fas fa-home"></i> Ubicación
         </button>
 
-        <button type="button" class="btn btn-default btn-sm" wire:click="btnOficios" onclick="verSpinnerOculto()"
-                data-toggle="modal" data-target="#modal-sm-bien-oficios"
+        <button type="button" class="btn btn-default btn-sm" {{--wire:click="btnOficios" onclick="verSpinnerOculto()"--}}
+                data-toggle="modal" data-target="#modal-sm-todo"
             {{--@if(!comprobarPermisos('bienes.edit')) disabled @endif--}}>
             <i class="fas fa-user"></i> Responsable
         </button>

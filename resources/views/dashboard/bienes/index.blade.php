@@ -19,7 +19,7 @@
                         </a>
                     </li>--}}
                     <li class="breadcrumb-item" {{--data-toggle="modal" data-target="#modal-oficios"--}}>
-                        <a href="#" class="btn bg-gradient-primary btn-sm" id="btn_header_oficios">
+                        <a href="#" class="btn bg-gradient-primary btn-sm disabled" id="btn_header_oficios">
                             {{--<i class="fas fa-file-invoice"></i>--}}
                             {{--Oficios Entregados--}}
                             <i class="fas fa-search"></i>

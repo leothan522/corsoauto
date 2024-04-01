@@ -326,6 +326,12 @@ return [
                     'route'  => 'sedes.index',
                     'can'  => 'sedes',
                 ],
+                [
+                    'text' => 'Personal',
+                    'icon' => 'fas fa-fw fa-users',
+                    'route'  => 'personal.index',
+                    'can'  => 'personal',
+                ],
             ],
         ],
         [

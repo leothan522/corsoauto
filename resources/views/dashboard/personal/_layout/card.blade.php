@@ -15,18 +15,18 @@
             {{--@if($imagenes)
                 Imagenes
             @endif--}}
-            Sedes
+            Personal
         </h3>
         <div class="card-tools">
             {{--<button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
             </button>--}}
             @if(!$nuevo)
-                <button class="btn btn-tool" wire:click="create" @if(!comprobarPermisos('sedes.create')) disabled @endif id="btn_create_bien" >
+                <button class="btn btn-tool" wire:click="create" @if(!comprobarPermisos('personal.create')) disabled @endif id="btn_create_bien" >
                     <i class="fas fa-file"></i> Nuevo
                 </button>
             @endif
             @if($editar)
-                <button class="btn btn-tool" wire:click="edit" @if(!comprobarPermisos('sedes.edit')) disabled @endif >
+                <button class="btn btn-tool" wire:click="edit" @if(!comprobarPermisos('personal.edit')) disabled @endif >
                     <i class="fas fa-edit"></i>
                     Editar
                 </button>
@@ -44,24 +44,12 @@
 
     <div class="card-body">
 
-        {{--<div @if(!$form) class="d-none" @endif >
-            @include('dashboard.sedes._layout.form')
-        </div>
-
-        <div @if(!$ver) class="d-none" @endif >
-            @include('dashboard.sedes._layout.show')
-        </div>
-
-        <div @if(!$imagenes) class="d-none" @endif >
-            @livewire('dashboard.imagenes-component')
-        </div>--}}
-
         <div @if(!$form) class="d-none" @endif >
-            @include('dashboard.sedes._layout.form')
+            @include('dashboard.personal._layout.form')
         </div>
 
         <div @if(!$ver) class="d-none" @endif >
-            @include('dashboard.sedes._layout.show')
+            @include('dashboard.personal._layout.show')
         </div>
 
         <div class="row m-5 @if(!$view) d-none @endif ">
@@ -75,14 +63,14 @@
     <div class="card-footer text-center @if(!$footer) d-none @endif">
 
 
-        <button type="button" class="btn btn-default btn-sm" {{--wire:click="btnUbicacion" onclick="verSpinnerOculto()"--}}
+        {{--<button type="button" class="btn btn-default btn-sm" --}}{{--wire:click="btnUbicacion" onclick="verSpinnerOculto()"--}}{{--
                 data-toggle="modal" data-target="#modal-sm-todo"
-            {{--@if(!comprobarPermisos('sedes.edit')) disabled @endif--}}>
+            --}}{{--@if(!comprobarPermisos('personal.edit')) disabled @endif--}}{{-->
             <i class="fas fa-users"></i> Personal Adscrito
-        </button>
+        </button>--}}
 
         <button type="button" class="btn btn-default btn-sm" wire:click="btnEstatus"
-                @if(!comprobarPermisos('sedes.edit')) disabled @endif >
+                @if(!comprobarPermisos('personal.edit')) disabled @endif >
             @if($estatus)
                 <i class="fas fa-ban"></i> Inactivar
             @else
@@ -91,7 +79,7 @@
         </button>
 
         <button type="button" class="btn btn-default btn-sm" wire:click="destroy"
-                @if(!comprobarPermisos('sedes.destroy')) disabled @endif>
+                @if(!comprobarPermisos('personal.destroy')) disabled @endif>
             <i class="fas fa-trash-alt"></i> Eliminar
         </button>
 

@@ -240,10 +240,10 @@ class BienesComponent extends Component
         //codigo para verificar si realmente se puede borrar, dejar false si no se requiere validacion
         $vinculado = false;
 
-        $oficios = Equipo::where('bienes_id', $this->bienes_id)->first();
+        /*$oficios = Equipo::where('bienes_id', $this->bienes_id)->first();
         if ($oficios){
             $vinculado = true;
-        }
+        }*/
 
         if ($vinculado) {
             $this->alert('warning', '¡No se puede Borrar!', [
