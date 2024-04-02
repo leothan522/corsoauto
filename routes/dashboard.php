@@ -38,6 +38,7 @@ Route::middleware([
 
     //Corsoauto
     Route::get('bienes', [BienesController::class, 'index'])->name('bienes.index');
+    Route::get('bienes/{id}', [BienesController::class, 'printEtiqueta'])->name('etiquetas.print');
     Route::get('sedes', [SedesController::class, 'index'])->name('sedes.index');
     Route::get('personal', [PersonalController::class, 'index'])->name('personal.index');
 
@@ -47,4 +48,6 @@ Route::get('dashboard/perfil', [UsuariosController::class, 'perfil'])->middlewar
 Route::get('chat-directo/{id?}', [ChatController::class, 'index'])->middleware(['user.android'])->name('chat.directo');
 
 Route::get('dashboard/prueba', [DashboardController::class, 'prueba'])->middleware('auth')->name('prueba.index');
+
+Route::get('bienes/{id}/consultar', [BienesController::class, 'webEtiqueta'])->name('etiquetas.web');
 

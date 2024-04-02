@@ -30,9 +30,8 @@
                     <i class="fas fa-edit"></i>
                     Editar
                 </button>
-                {{--<a href="--}}{{--{{ route('etiquetas.print', $articulos_id) }}--}}{{--#" target="_blank" class="btn btn-tool"><i class="fas fa-print"></i> Imprimir Etiqueta</a>--}}
+                <a href="{{ route('etiquetas.print', $bienes_id) }}" target="_blank" class="btn btn-tool"><i class="fas fa-print"></i> Imprimir Etiqueta</a>
             @endif
-
             @if($cancelar)
                 <button class="btn btn-tool" wire:click="btnCancelar">
                     <i class="fas fa-ban"></i> Cancelar
